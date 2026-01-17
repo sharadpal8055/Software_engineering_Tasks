@@ -43,6 +43,35 @@ class TestSprint1(unittest.TestCase):
             ms.add_marks("999", 50)
 
 
+class TestSprint2(unittest.TestCase):
+
+    def test_calculate_grade_A(self):
+        ms = MarksSystem()
+        ms.add_student("201", "Aman")
+        ms.add_marks("201", 85)
+        self.assertEqual(ms.calculate_grade("201"), "A")
+
+    def test_calculate_grade_B(self):
+        ms = MarksSystem()
+        ms.add_student("202", "Riya")
+        ms.add_marks("202", 72)
+        self.assertEqual(ms.calculate_grade("202"), "B")
+
+    def test_calculate_grade_C(self):
+        ms = MarksSystem()
+        ms.add_student("203", "Neel")
+        ms.add_marks("203", 45)
+        self.assertEqual(ms.calculate_grade("203"), "C")
+
+    def test_calculate_grade_no_marks(self):
+        ms = MarksSystem()
+        ms.add_student("204", "Isha")
+        with self.assertRaises(ValueError):
+            ms.calculate_grade("204")
+
+
+
+
 if __name__ == "__main__":
     unittest.main()
 

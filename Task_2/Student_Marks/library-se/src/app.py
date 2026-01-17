@@ -26,3 +26,19 @@ class MarksSystem:
             raise ValueError("Marks must be between 0 and 100")
 
         self.students[student_id].marks = marks
+
+    def calculate_grade(self, student_id):
+        if student_id not in self.students:
+            raise KeyError("Student not found")
+
+        marks = self.students[student_id].marks
+        if marks is None:
+            raise ValueError("Marks not assigned")
+
+        if marks >= 80:
+            return "A"
+        elif marks >= 60:
+            return "B"
+        else:
+            return "C"
+
